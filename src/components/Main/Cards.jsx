@@ -1,308 +1,200 @@
 import { CardsDate } from "./CardsDate.jsx"
 
-export function CardsOneColumn(){
-    return (
-        <>
-        <div className="cards">
-                  <div className="cards__item">
-                    <div className="cards__card card">
-                      <div className="card__group">
-                        <div className="card__theme _orange">
-                          <p className="_orange">Web Design</p>
-                        </div>
-                        <a href="#popBrowse" target="_self">
-                          <div className="card__btn">
-                            <div />
-                            <div />
-                            <div />
-                          </div>
-                        </a>
-                      </div>
-                      <div className="card__content">
-                        <a href="" target="_blank">
-                          <h3 className="card__title">Название задачи</h3>
-                        </a>
-                        <CardsDate />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="cards__item">
-                    <div className="cards__card card">
-                      <div className="card__group">
-                        <div className="card__theme _green">
-                          <p className="_green">Research</p>
-                        </div>
-                        <a href="#popBrowse" target="_self">
-                          <div className="card__btn">
-                            <div />
-                            <div />
-                            <div />
-                          </div>
-                        </a>
-                      </div>
-                      <div className="card__content">
-                        <a href="" target="_blank">
-                          <h3 className="card__title">Название задачи</h3>
-                        </a>
-                       <CardsDate />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="cards__item">
-                    <div className="cards__card card">
-                      <div className="card__group">
-                        <div className="card__theme _orange">
-                          <p className="_orange">Web Design</p>
-                        </div>
-                        <a href="#popBrowse" target="_self">
-                          <div className="card__btn">
-                            <div />
-                            <div />
-                            <div />
-                          </div>
-                        </a>
-                      </div>
-                      <div className="card__content">
-                        <a href="" target="_blank">
-                          <h3 className="card__title">Название задачи</h3>
-                        </a>
-                        <CardsDate />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="cards__item">
-                    <div className="cards__card card">
-                      <div className="card__group">
-                        <div className="card__theme _purple">
-                          <p className="_purple">Copywriting</p>
-                        </div>
-                        <a href="#popBrowse" target="_self">
-                          <div className="card__btn">
-                            <div />
-                            <div />
-                            <div />
-                          </div>
-                        </a>
-                      </div>
-                      <div className="card__content">
-                        <a href="" target="_blank">
-                          <h3 className="card__title">Название задачи</h3>
-                        </a>
-                        <CardsDate />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="cards__item">
-                    <div className="cards__card card">
-                      <div className="card__group">
-                        <div className="card__theme _orange">
-                          <p className="_orange">Web Design</p>
-                        </div>
-                        <a href="#popBrowse" target="_self">
-                          <div className="card__btn">
-                            <div />
-                            <div />
-                            <div />
-                          </div>
-                        </a>
-                      </div>
-                      <div className="card__content">
-                        <a href="" target="_blank">
-                          <h3 className="card__title">Название задачи</h3>
-                        </a>
-                        <CardsDate />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-        </>
-    )
-}
+export function CardsOneColumn({cards}){
 
-export function CardsTwoColumn(){
+
     return (
-        <>
-        <div className="main__column">
-                <div className="column__title">
-                  <p>Нужно сделать</p>
-                </div>
-                <div className="cards">
-                  <div className="cards__item">
-                    <div className="cards__card card">
-                      <div className="card__group">
-                        <div className="card__theme _green">
-                          <p className="_green">Research</p>
-                        </div>
-                        <a href="#popBrowse" target="_self">
-                          <div className="card__btn">
-                            <div />
-                            <div />
-                            <div />
-                          </div>
-                        </a>
-                      </div>
-                      <div className="card__content">
-                        <a href="" target="_blank">
-                          <h3 className="card__title">Название задачи</h3>
-                        </a>
-                        <CardsDate />
-                      </div>
-                    </div>
+  
+      <div className="cards">
+         <div className="column__title">
+            <p>Без статуса</p>
+          </div>
+      {cards.map((el) => (
+        <div key={el.id}>
+          <div className="cards">
+            <div className="cards__item" key={el.id}>
+              <div className="cards__card card">
+                <div className="card__group">
+                  <div className={`card__theme ${el.color}`}> 
+                    <p className={el.color}>{el.theme}</p>
                   </div>
+                  <a href="#popBrowse" target="_self">
+                    <div className="card__btn">
+                      <div />
+                      <div />
+                      <div />
+                    </div>
+                  </a>
+                </div>
+                <div className="card__content">
+                  <a href="" target="_blank">
+                    <h3 className="card__title">{el.title}</h3>
+                  </a>
+                  <CardsDate key={el.id}  date = {el.date}/>
                 </div>
               </div>
-        </>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
     )
 }
 
-export function CardsThreeColumn(){
+export function CardsTwoColumn({cards}){
+ console.log(cards)
     return (
-        <>
-         <div className="main__column">
-                <div className="column__title">
-                  <p>В работе</p>
-                </div>
-                <div className="cards">
-                  <div className="cards__item">
-                    <div className="cards__card card">
-                      <div className="card__group">
-                        <div className="card__theme _green">
-                          <p className="_green">Research</p>
-                        </div>
-                        <a href="#popBrowse" target="_self">
-                          <div className="card__btn">
-                            <div />
-                            <div />
-                            <div />
-                          </div>
-                        </a>
-                      </div>
-                      <div className="card__content">
-                        <a href="" target="_blank">
-                          <h3 className="card__title">Название задачи</h3>
-                        </a>
-                        <CardsDate />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="cards__item">
-                    <div className="cards__card card">
-                      <div className="card__group">
-                        <div className="card__theme _purple">
-                          <p className="_purple">Copywriting</p>
-                        </div>
-                        <a href="#popBrowse" target="_self">
-                          <div className="card__btn">
-                            <div />
-                            <div />
-                            <div />
-                          </div>
-                        </a>
-                      </div>
-                      <div className="card__content">
-                        <a href="" target="_blank">
-                          <h3 className="card__title">Название задачи</h3>
-                        </a>
-                        <CardsDate />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="cards__item">
-                    <div className="cards__card card">
-                      <div className="card__group">
-                        <div className="card__theme _orange">
-                          <p className="_orange">Web Design</p>
-                        </div>
-                        <a href="#popBrowse" target="_self">
-                          <div className="card__btn">
-                            <div />
-                            <div />
-                            <div />
-                          </div>
-                        </a>
-                      </div>
-                      <div className="card__content">
-                        <a href="" target="_blank">
-                          <h3 className="card__title">Название задачи</h3>
-                        </a>
-                        <CardsDate />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+       <>
+  <div className="main__column">
+    <div className="column__title">
+      <p>Нужно сделать</p>
+    </div>
+    {cards.map((el) => (
+      <div key={el.id} className="cards">
+        <div className="cards__item" key={el.id}>
+          <div className="cards__card card">
+            <div className="card__group">
+              <div className={`card__theme ${el.color}`}>
+                <p className={el.color}>{el.theme}</p>
               </div>
-        </>
+              <a href="#popBrowse" target="_self">
+                <div className="card__btn">
+                  <div />
+                  <div />
+                  <div />
+                </div>
+              </a>
+            </div>
+            <div className="card__content">
+              <a href="" target="_blank">
+                <h3 className="card__title">{el.title}</h3>
+              </a>
+              <CardsDate key={el.id} date= {el.date}/>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</>
+
     )
 }
 
-export function CardsFourColumn(){
-    return (
-        <>
-         <div className="main__column">
-                <div className="column__title">
-                  <p>Тестирование</p>
-                </div>
-                <div className="cards">
-                  <div className="cards__item">
-                    <div className="cards__card card">
-                      <div className="card__group">
-                        <div className="card__theme _green">
-                          <p className="_green">Research</p>
-                        </div>
-                        <a href="#popBrowse" target="_self">
-                          <div className="card__btn">
-                            <div />
-                            <div />
-                            <div />
-                          </div>
-                        </a>
-                      </div>
-                      <div className="card__content">
-                        <a href="" target="_blank">
-                          <h3 className="card__title">Название задачи</h3>
-                        </a>
-                        <CardsDate />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-        </>
-    )
-}
-
-export function CardsFiveColumn(){
-return (
+export function CardsThreeColumn({cards}){
+  return (
     <>
-    <div className="main__column">
-                <div className="column__title">
-                  <p>Готово</p>
-                </div>
-                <div className="cards">
-                  <div className="cards__item">
-                    <div className="cards__card card">
-                      <div className="card__group">
-                        <div className="card__theme _green">
-                          <p className="_green">Research</p>
-                        </div>
-                        <a href="#popBrowse" target="_self">
-                          <div className="card__btn">
-                            <div />
-                            <div />
-                            <div />
-                          </div>
-                        </a>
-                      </div>
-                      <div className="card__content">
-                        <a href="" target="_blank">
-                          <h3 className="card__title">Название задачи</h3>
-                        </a>
-                        <CardsDate />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-    </>
-)
+<div className="main__column">
+ <div className="column__title">
+   <p>В работе</p>
+ </div>
+ {cards.map((el) => (
+   <div key={el.id} className="cards">
+     <div className="cards__item" key={el.id}>
+       <div className="cards__card card">
+         <div className="card__group">
+           <div className={`card__theme ${el.color}`}>
+             <p className={el.color}>{el.theme}</p>
+           </div>
+           <a href="#popBrowse" target="_self">
+             <div className="card__btn">
+               <div />
+               <div />
+               <div />
+             </div>
+           </a>
+         </div>
+         <div className="card__content">
+           <a href="" target="_blank">
+             <h3 className="card__title">{el.title}</h3>
+           </a>
+           <CardsDate key={el.id} date={el.date}/>
+         </div>
+       </div>
+     </div>
+   </div>
+ ))}
+</div>
+</>
+
+ )
+}
+
+export function CardsFourColumn({cards}){
+  return (
+    <>
+<div className="main__column">
+ <div className="column__title">
+   <p>Тестирование</p>
+ </div>
+ {cards.map((el) => (
+   <div key={el.id} className="cards">
+     <div className="cards__item" key={el.id}>
+       <div className="cards__card card">
+         <div className="card__group">
+           <div className={`card__theme ${el.color}`}>
+             <p className={el.color}>{el.theme}</p>
+           </div>
+           <a href="#popBrowse" target="_self">
+             <div className="card__btn">
+               <div />
+               <div />
+               <div />
+             </div>
+           </a>
+         </div>
+         <div className="card__content">
+           <a href="" target="_blank">
+             <h3 className="card__title">{el.title}</h3>
+           </a>
+           <CardsDate key={el.id} date= {el.date}/>
+         </div>
+       </div>
+     </div>
+   </div>
+ ))}
+</div>
+</>
+
+ )
+}
+
+export function CardsFiveColumn({cards}){
+  return (
+    <>
+<div className="main__column">
+ <div className="column__title">
+   <p>Готово</p>
+ </div>
+ {cards.map((el) => (
+   <div key={el.id} className="cards">
+     <div className="cards__item" key={el.id}>
+       <div className="cards__card card">
+         <div className="card__group">
+           <div className={`card__theme ${el.color}`}>
+             <p className={el.color}>{el.theme}</p>
+           </div>
+           <a href="#popBrowse" target="_self">
+             <div className="card__btn">
+               <div />
+               <div />
+               <div />
+             </div>
+           </a>
+         </div>
+         <div className="card__content">
+           <a href="" target="_blank">
+             <h3 className="card__title">{el.title}</h3>
+           </a>
+           <CardsDate key={el.id} date= {el.date}/>
+           {console.log(el.date)}
+         </div>
+       </div>
+     </div>
+   </div>
+ ))}
+</div>
+</>
+
+ )
 }

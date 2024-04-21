@@ -1,12 +1,17 @@
 import MainColumn from "./MainColumn.jsx"
-function Main(){
+function Main({cards, isLoading}){
+  
     return (
         <>
         <main className="main">
         <div className="container">
           <div className="main__block">
             <div className="main__content">
-             <MainColumn />
+              {isLoading ? "Идет загрузка......" : (
+                <>
+                 <MainColumn cards={cards}/>
+                </>
+              )} 
             </div>
           </div>
         </div>
