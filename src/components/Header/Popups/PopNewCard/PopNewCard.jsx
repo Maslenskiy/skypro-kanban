@@ -1,8 +1,8 @@
-import { PopupNewCalendarAddRasks } from "./PopupNewCalendar.jsx"
-function PopNewCard(){
-    return (
-        <>
-        <div className="pop-new-card" id="popNewCard">
+import { PopupNewCalendarAddRasks } from '../PopuNewCalendar/PopupNewCalendar.jsx';
+function PopNewCard() {
+  return (
+    <>
+      <div className="pop-new-card" id="popNewCard">
         <div className="pop-new-card__container">
           <div className="pop-new-card__block">
             <div className="pop-new-card__content">
@@ -26,7 +26,7 @@ function PopNewCard(){
                       name="name"
                       id="formTitle"
                       placeholder="Введите название задачи..."
-                      autoFocus = ""
+                      autoFocus=""
                     />
                   </div>
                   <div className="form-new__block">
@@ -38,7 +38,7 @@ function PopNewCard(){
                       name="text"
                       id="textArea"
                       placeholder="Введите описание задачи..."
-                      defaultValue={""}
+                      defaultValue={''}
                     />
                   </div>
                 </form>
@@ -65,8 +65,8 @@ function PopNewCard(){
           </div>
         </div>
       </div>
-        </>
-    )
+    </>
+  );
 }
 
-export default PopNewCard
+export default PopNewCard;
