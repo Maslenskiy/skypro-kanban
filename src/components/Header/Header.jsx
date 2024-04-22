@@ -1,5 +1,5 @@
-import HeaderLogo from "./HeaderLogo.jsx";
-import HeaderNav from "./HeaderNav.jsx";
+import HeaderLogo from "../HeaderLogo/HeaderLogo.jsx";
+import HeaderNav from "../HeaderNav/HeaderNav.jsx";
 
 function Header({addCard}){
     return (

@@ -1,8 +1,8 @@
 import Header from "./components/Header/Header.jsx";
 import Main from "./components/Main/Main.jsx";
-import PopExitAccount from "./components/Header/popups/PopExitAccount.jsx";
-import PopNewCard from "./components/Header/popups/PopNewCard.jsx";
-import PopBrowse from "./components/Header/popups/PopBrowse.jsx";
+import PopExitAccount from "./components/Header/Popups/PopExitAccount.jsx";
+import PopNewCard from "./components/Header/Popups/PopNewCard.jsx";
+import PopBrowse from "./components/Header/Popups/PopBrowse.jsx";
 import './App.css'
 import { useEffect, useState } from "react";
 import { task } from "./Data.js";
