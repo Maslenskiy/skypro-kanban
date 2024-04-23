@@ -1,4 +1,5 @@
-export function CardsDate(){
+export function CardsDate({date}){
+  const currentDate = date;
     return (
         <>
         <div className="card__date">
@@ -30,7 +31,7 @@ export function CardsDate(){
                               </clipPath>
                             </defs>
                           </svg>
-                          <p>30.10.23</p>
+                        <p>{currentDate}</p>
                         </div>
         </>
     )

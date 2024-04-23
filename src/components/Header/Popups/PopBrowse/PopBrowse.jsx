@@ -1,8 +1,8 @@
-import PopuNewCalendarTask from "./PopupNewCalendar.jsx"
-function PopBrowse(){
-    return (
-        <>
-         <div className="pop-browse" id="popBrowse">
+import PopuNewCalendarTask from '../PopuNewCalendar/PopupNewCalendar.jsx';
+function PopBrowse() {
+  return (
+    <>
+      <div className="pop-browse" id="popBrowse">
         <div className="pop-browse__container">
           <div className="pop-browse__block">
             <div className="pop-browse__content">
@@ -48,11 +48,11 @@ function PopBrowse(){
                       id="textArea01"
                       readOnly=""
                       placeholder="Введите описание задачи..."
-                      defaultValue={""}
+                      defaultValue={''}
                     />
                   </div>
                 </form>
-               <PopuNewCalendarTask />
+                <PopuNewCalendarTask />
               </div>
               <div className="theme-down__categories theme-down">
                 <p className="categories__p subttl">Категория</p>
@@ -96,7 +96,7 @@ function PopBrowse(){
           </div>
         </div>
       </div>
-        </>
-    )
+    </>
+  );
 }
-export default PopBrowse
+export default PopBrowse;
