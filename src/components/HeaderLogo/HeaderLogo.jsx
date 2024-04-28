@@ -1,14 +1,15 @@
+import * as S from '../Header/header.styled.js'
 function HeaderLogo(){
     return (
         <>
-         <div className="header__logo _show _light">
+         <div>
               <a href="" target="_self">
-                <img src="public/logo.png" alt="logo" />
+                <S.HeaderLogoImg src="public/logo.png" alt="logo" />
               </a>
             </div>
-            <div className="header__logo _dark">
+            <div>
               <a href="" target="_self">
-                <img src="images/logo_dark.png" alt="logo" />
+                <S.HeaderLogoImg src="public/logo_dark.png" alt="logo" />
               </a>
             </div>
         </>

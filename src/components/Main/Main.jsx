@@ -1,11 +1,13 @@
+import { Container } from '../../global.styled.js';
 import MainColumn from '../MainColumn/MainColumn.jsx';
+import * as S from './main.styled.js'
 function Main({ cards, isLoading }) {
   return (
     <>
-      <main className="main">
-        <div className="container">
-          <div className="main__block">
-            <div className="main__content">
+      <S.Main>
+        <Container>
+          <S.MainBlock>
+            <S.MainContent>
               {isLoading ? (
                 'Идет загрузка......'
               ) : (
@@ -13,10 +15,10 @@ function Main({ cards, isLoading }) {
                   <MainColumn cards={cards} />
                 </>
               )}
-            </div>
-          </div>
-        </div>
-      </main>
+            </S.MainContent>
+          </S.MainBlock>
+        </Container>
+      </S.Main>
     </>
   );
 }

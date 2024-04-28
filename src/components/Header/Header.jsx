@@ -1,17 +1,18 @@
+import { Container } from "../../global.styled.js";
 import HeaderLogo from "../HeaderLogo/HeaderLogo.jsx";
 import HeaderNav from "../HeaderNav/HeaderNav.jsx";
-
+import * as S from './header.styled.js';
 function Header({addCard}){
     return (
         <>
-         <header className="header">
-        <div className="container">
-          <div className="header__block">
+         <S.Header>
+        <Container>
+          <S.HeaderBlock>
             <HeaderLogo />
             <HeaderNav addCard={addCard}/>
-          </div>
-        </div>
-      </header>
+          </S.HeaderBlock>
+        </Container>
+      </S.Header>
         </>
     )
 }

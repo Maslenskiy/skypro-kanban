@@ -1,4 +1,5 @@
 import { useState } from "react"
+import * as S from '../Header/header.styled.js'
 function HeaderNav({addCard}){
   const [isOpen, setIsOpen] = useState(false)
 
@@ -7,13 +8,13 @@ function HeaderNav({addCard}){
   }
     return (
         <>
-         <nav className="header__nav">
-              <button className="header__btn-main-new _hover01" id="btnMainNew">
-                <a href="#popNewCard" onClick={addCard}>Создать новую задачу</a>
-              </button>
-              <a href="#user-set-target" className="header__user _hover02" onClick={clickHandler}>
+         <S.HeaderNav>
+              <S.HeaderBtnNew id="btnMainNew">
+                <S.HeaderBtnNewLink href="#popNewCard" onClick={addCard}>Создать новую задачу</S.HeaderBtnNewLink>
+              </S.HeaderBtnNew>
+              <S.HeaderUser href="#user-set-target" className=" _hover02" onClick={clickHandler}>
                 Ivan Ivanov
-              </a>
+              </S.HeaderUser>
               {isOpen && (
                   <>
                      <div
@@ -34,7 +35,7 @@ function HeaderNav({addCard}){
               </div>
                   </>
                 )}
-            </nav>
+            </S.HeaderNav>
         </>
     )
 }
