@@ -1,8 +1,9 @@
+import { CardDate } from "../Cards/cards.styled";
 export function CardsDate({date}){
   const currentDate = date;
     return (
         <>
-        <div className="card__date">
+        <CardDate>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width={13}
@@ -32,7 +33,7 @@ export function CardsDate({date}){
                             </defs>
                           </svg>
                         <p>{currentDate}</p>
-                        </div>
+                        </CardDate>
         </>
     )
 }

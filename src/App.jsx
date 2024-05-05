@@ -6,6 +6,7 @@ import PopBrowse from './components/Header/Popups/PopBrowse/PopBrowse.jsx';
 import './App.css';
 import { useEffect, useState } from 'react';
 import { task } from './Data.js';
+import { Wrapper } from './global.styled.js';
 
 function App() {
   const [cards, setCards] = useState(task);
@@ -38,7 +39,7 @@ function App() {
 
   return (
     <>
-      <div className="wrapper">
+      <Wrapper>
         {/* Popup */}
         <PopExitAccount />
         <PopNewCard />
@@ -47,7 +48,7 @@ function App() {
         <Header addCard={addCard} />
         {/* Тут Main */}
         <Main cards={cards} isLoading={isLoading} />
-      </div>
+      </Wrapper>
     </>
   );
 }

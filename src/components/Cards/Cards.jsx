@@ -1,41 +1,43 @@
+import * as S from './cards.styled.js'
 import { CardsDate } from '../CardsDate/CardsDate.jsx';
+import * as St from '../Main/main.styled.js'
 
 export function Cards({ cards, name }) {
   return (
-    <div className="main__column column">
-      <div className="cards">
-        <div className="column__title">
+    <St.MainColumn>
+      <S.Cards>
+        <St.ColumnTitle>
           <p>{name}</p>
-        </div>
+        </St.ColumnTitle>
         {cards.map((el) => (
           <div key={el.id}>
-            <div className="cards">
-              <div className="cards__item" key={el.id}>
-                <div className="cards__card card">
-                  <div className="card__group">
-                    <div className={`card__theme ${el.color}`}>
-                      <p className={el.color}>{el.theme}</p>
-                    </div>
+            <S.Cards>
+              <S.CardsItem key={el.id}>
+                <S.CardDiv>
+                  <S.CardGroup>
+                    <S.CardTheme $color = {el.color}>
+                      <S.CardName>{el.theme}</S.CardName>
+                    </S.CardTheme >
                     <a href="#popBrowse" target="_self">
-                      <div className="card__btn">
-                        <div />
-                        <div />
-                        <div />
-                      </div>
+                      <S.CardBtn>
+                        <S.Dot />
+                        <S.Dot />
+                        <S.Dot />
+                      </S.CardBtn>
                     </a>
-                  </div>
-                  <div className="card__content">
+                  </S.CardGroup>
+                  <S.CardContent>
                     <a href="" target="_blank">
-                      <h3 className="card__title">{el.title}</h3>
+                      <S.CardTitle>{el.title}</S.CardTitle>
                     </a>
                     <CardsDate key={el.id} date={el.date} />
-                  </div>
-                </div>
-              </div>
-            </div>
+                  </S.CardContent>
+                </S.CardDiv>
+              </S.CardsItem>
+            </S.Cards>
           </div>
         ))}
-      </div>
-    </div>
+      </S.Cards>
+    </St.MainColumn>
   );
 }
