@@ -17,7 +17,6 @@
 }
 
 .pop-exit {
-  display: none;
   width: 100%;
   height: 100%;
   min-width: 320px;
@@ -441,7 +440,6 @@
 }
 
 .pop-browse {
-  display: none;
   width: 100%;
   height: 100%;
   min-width: 375px;
@@ -595,16 +593,16 @@
   color: #565EEF;
 }
 
-._btn-bg {
+/* ._btn-bg {
   border-radius: 4px;
   background: #565EEF;
   border: none;
   outline: none;
   color: #FFFFFF;
-}
-._btn-bg a {
+} */
+/* ._btn-bg a {
   color: #FFFFFF;
-}
+} */
 
 ._hide {
   display: none;

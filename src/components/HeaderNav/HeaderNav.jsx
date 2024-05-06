@@ -1,5 +1,7 @@
 import { useState } from "react"
 import * as S from '../Header/header.styled.js'
+import { Link } from "react-router-dom"
+import { patch } from "../../routesPath.js"
 function HeaderNav({addCard}){
   const [isOpen, setIsOpen] = useState(false)
 
@@ -30,7 +32,7 @@ function HeaderNav({addCard}){
                   <input type="checkbox" className="checkbox" name="checkbox" />
                 </div>
                 <button type="button" className="_hover03">
-                  <a href="#popExit">Выйти</a>
+                  <Link to={patch.EXIT}>Выйти</Link>
                 </button>
               </div>
                   </>

@@ -1,4 +1,12 @@
-function PopExitAccount(){
+import { Link, useNavigate } from "react-router-dom"
+import { patch } from "../../../../routesPath"
+
+function PopExitAccount({setIsAuth}){
+  const navigate = useNavigate()
+  const logOut = () =>{
+    setIsAuth(false)
+    navigate(patch.LOGIN)
+  }
     return (
         <>
      <div className="pop-exit" id="popExit">
@@ -9,11 +17,11 @@ function PopExitAccount(){
             </div>
             <form className="pop-exit__form" id="formExit" action="#">
               <div className="pop-exit__form-group">
-                <button className="pop-exit__exit-yes _hover01" id="exitYes">
-                  <a href="modal/signin.html">Да, выйти</a>{" "}
+                <button onClick={logOut} className="pop-exit__exit-yes _hover01" id="exitYes">
+                  <Link to={patch.LOGIN}>Да, выйти</Link>{" "}
                 </button>
                 <button className="pop-exit__exit-no _hover03" id="exitNo">
-                  <a href="main.html">Нет, остаться</a>{" "}
+                  <Link to={patch.MAIN}>Нет, остаться</Link>{" "}
                 </button>
               </div>
             </form>
