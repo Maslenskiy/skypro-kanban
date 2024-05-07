@@ -1,9 +1,9 @@
 import { Link, useParams } from 'react-router-dom';
 import PopuNewCalendarTask from '../PopuNewCalendar/PopupNewCalendar.jsx';
-import { patch } from '../../../../routesPath.js';
+import { paths } from '../../../../routesPath.js';
 import { BtnBg } from './popBrowse.styled.js';
 function PopBrowse() {
-  const {id} = useParams()
+  const { id } = useParams();
   return (
     <>
       <div className="pop-browse" id="popBrowse">
@@ -74,7 +74,7 @@ function PopBrowse() {
                   </button>
                 </div>
                 <BtnBg>
-                <Link to={patch.MAIN}>Закрыть</Link>
+                  <Link to={paths.MAIN}>Закрыть</Link>
                 </BtnBg>
               </div>
               <div className="pop-browse__btn-edit _hide">
@@ -93,7 +93,7 @@ function PopBrowse() {
                   </button>
                 </div>
                 <button className="btn-edit__close _btn-bg _hover01">
-                  <Link to={patch.MAIN}>Закрыть</Link>
+                  <Link to={paths.MAIN}>Закрыть</Link>
                 </button>
               </div>
             </div>

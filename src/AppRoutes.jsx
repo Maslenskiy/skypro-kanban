@@ -1,26 +1,29 @@
 import { Route, Routes } from 'react-router-dom';
-import { MainPage } from './Page/MainPage/MainPage';
-import { LoginPage } from './Page/LoginPage/LoginPage';
-import { RegisterPage } from './Page/RegisterPage/RegisterPage';
-import { patch } from './routesPath';
-import PrivateRoute from './PrivateRoute';
+import { MainPage } from './Pages/MainPage/MainPage';
+import { LoginPage } from './Pages/LoginPage/LoginPage';
+import { RegisterPage } from './Pages/RegisterPage/RegisterPage';
+import { paths } from './routesPath';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import { useState } from 'react';
-import { NotFoundPage } from './Page/NotFoundPage/NotFoundPage';
-import { PopExit } from './Page/Popups/PopExitPage/PopExit';
+import { NotFoundPage } from './Pages/NotFoundPage/NotFoundPage';
+import { PopExit } from './Pages/Popups/PopExitPage/PopExit';
 import PopBrowse from './components/Header/Popups/PopBrowse/PopBrowse';
 export const AppRoutes = () =>{
     const [isAuth, setIsAuth] = useState(false)
     return (
         <Routes>
             <Route element={ <PrivateRoute isAuth={isAuth}/>}>
-                 <Route path={patch.MAIN} element={<MainPage/>}>
-                    <Route path={patch.EXIT} element={<PopExit setIsAuth={setIsAuth}/>}/>
-                    <Route path={patch.CARD_ID} element={<PopBrowse />}/>
+                 <Route path={paths.MAIN} element={<MainPage/>}>
+                    <Route 
+                        path={paths.EXIT} 
+                        element={<PopExit setIsAuth={setIsAuth}/>}
+                    />
+                    <Route path={paths.CARD_ID} element={<PopBrowse />}/>
                  </Route>
             </Route>
-                <Route path={patch.LOGIN} element={<LoginPage setIsAuth={setIsAuth}/>}/>
-                <Route path={patch.REGISTER} element={<RegisterPage />}/>
-                <Route path={patch.NOT_FOUND} element={<NotFoundPage/>}/>
-      </Routes>
+            <Route path={paths.LOGIN} element={<LoginPage setIsAuth={setIsAuth}/>}/>
+            <Route path={paths.REGISTER} element={<RegisterPage />}/>
+            <Route path={paths.NOT_FOUND} element={<NotFoundPage/>}/>
+        </Routes>
     )
 }

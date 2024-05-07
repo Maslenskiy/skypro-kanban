@@ -1,4 +1,4 @@
-export const patch = {
+export const paths = {
     MAIN: '/',
     LOGIN: '/login',
     REGISTER: '/register',
