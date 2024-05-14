@@ -4,7 +4,7 @@ import { paths } from '../../../../routesPath';
 function PopExitAccount({ setIsAuth }) {
   const navigate = useNavigate();
   const logOut = () => {
-    setIsAuth(false);
+    setIsAuth('');
     navigate(paths.LOGIN);
   };
   return (

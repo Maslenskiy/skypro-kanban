@@ -8,12 +8,25 @@ import { useState } from 'react';
 import { NotFoundPage } from './Pages/NotFoundPage/NotFoundPage';
 import { PopExit } from './Pages/Popups/PopExitPage/PopExit';
 import PopBrowse from './components/Header/Popups/PopBrowse/PopBrowse';
+
+function getLocalStorage(){
+    let user
+try{
+user = JSON.parse(localStorage.getItem('user'))
+return user
+}
+
+catch(err) {
+return ('')
+}
+}
+
 export const AppRoutes = () =>{
-    const [isAuth, setIsAuth] = useState(false)
+    const [isAuth, setIsAuth] = useState(getLocalStorage)
     return (
         <Routes>
             <Route element={ <PrivateRoute isAuth={isAuth}/>}>
-                 <Route path={paths.MAIN} element={<MainPage/>}>
+                 <Route path={paths.MAIN} element={<MainPage isAuth={isAuth}/>}>
                     <Route 
                         path={paths.EXIT} 
                         element={<PopExit setIsAuth={setIsAuth}/>}

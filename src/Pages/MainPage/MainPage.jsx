@@ -5,7 +5,7 @@ import Header from '../../components/Header/Header.jsx';
 import PopNewCard from '../../components/Header/Popups/PopNewCard/PopNewCard.jsx';
 import { Wrapper } from '../../global.styled.js'
 import { Outlet } from 'react-router-dom';
-export const MainPage = () =>{
+export const MainPage = ({isAuth}) =>{
     const [cards, setCards] = useState(task);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -37,7 +37,7 @@ export const MainPage = () =>{
     return (
         <Wrapper>
         <PopNewCard />
-        <Header addCard={addCard}/>
+        <Header isAuth={isAuth} addCard={addCard}/>
         <Main cards={cards} isLoading={isLoading} />
         <Outlet />
       </Wrapper>
