@@ -9,20 +9,8 @@ import { NotFoundPage } from './Pages/NotFoundPage/NotFoundPage';
 import { PopExit } from './Pages/Popups/PopExitPage/PopExit';
 import PopBrowse from './components/Header/Popups/PopBrowse/PopBrowse';
 
-function getLocalStorage(){
-    let user
-try{
-user = JSON.parse(localStorage.getItem('user'))
-return user
-}
-
-catch(err) {
-return ('')
-}
-}
-
 export const AppRoutes = () =>{
-    const [isAuth, setIsAuth] = useState(getLocalStorage)
+    const [isAuth, setIsAuth] = useState('')
     return (
         <Routes>
             <Route element={ <PrivateRoute isAuth={isAuth}/>}>
