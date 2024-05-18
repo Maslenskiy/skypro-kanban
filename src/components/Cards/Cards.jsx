@@ -11,15 +11,15 @@ export function Cards({ cards, name }) {
           <p>{name}</p>
         </St.ColumnTitle>
         {cards.map((el) => (
-          <div key={el.id}>
+          <div key={el._id}>
             <S.Cards>
-              <S.CardsItem key={el.id}>
+              <S.CardsItem key={el._id}>
                 <S.CardDiv>
                   <S.CardGroup>
                     <S.CardTheme $color = {el.color}>
                       <S.CardName>{el.theme}</S.CardName>
                     </S.CardTheme >
-                    <Link to = {`/card/${el.id}`}>
+                    <Link to = {`/card/${el._id}`}>
                       <S.CardBtn>
                         <S.Dot />
                         <S.Dot />
@@ -31,7 +31,7 @@ export function Cards({ cards, name }) {
                     <a href="" target="_blank">
                       <S.CardTitle>{el.title}</S.CardTitle>
                     </a>
-                    <CardsDate key={el.id} date={el.date} />
+                    <CardsDate key={el._id} date={el.date} />
                   </S.CardContent>
                 </S.CardDiv>
               </S.CardsItem>

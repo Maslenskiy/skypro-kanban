@@ -1,18 +1,19 @@
 import { useEffect, useState } from 'react';
-import { task } from '../../Data.js';
 import  Main  from '../../components/Main/Main.jsx';
 import Header from '../../components/Header/Header.jsx';
 import PopNewCard from '../../components/Header/Popups/PopNewCard/PopNewCard.jsx';
 import { Wrapper } from '../../global.styled.js'
 import { Outlet } from 'react-router-dom';
-export const MainPage = () =>{
-    const [cards, setCards] = useState(task);
+import { getCards } from '../../Api/cardsApi.js';
+export const MainPage = ({isAuth}) =>{
+    const [cards, setCards] = useState([]);
+    const [errorMsg, setErrorMsg] = useState('')
     const [isLoading, setIsLoading] = useState(false);
 
     function addCard(e) {
         e.preventDefault();
         const newCard = {
-          id: cards[cards.length - 1].id + 1,
+          _id: cards[cards.length - 1]._id + 1,
           theme: 'WebDesing',
           date: new Date().toLocaleDateString('ru-RU', {
             day: 'numeric',
@@ -29,16 +30,23 @@ export const MainPage = () =>{
     
       useEffect(() => {
         setIsLoading(true);
-        setTimeout(() => {
+
+        getCards(isAuth.token).then((res) =>{
+          setErrorMsg('')
+          setCards(res.tasks)
           setIsLoading(false);
-        }, 2000);
+        }).catch((err)=>{
+          setErrorMsg(err.message)
+        }).finally(() =>{
+          setIsLoading(false)
+        })
       }, []);
 
     return (
         <Wrapper>
         <PopNewCard />
-        <Header addCard={addCard}/>
-        <Main cards={cards} isLoading={isLoading} />
+        <Header isAuth={isAuth} addCard={addCard}/>
+        <Main errorMsg={errorMsg} cards={cards} isLoading={isLoading} />
         <Outlet />
       </Wrapper>
     )

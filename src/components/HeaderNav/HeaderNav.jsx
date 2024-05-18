@@ -2,7 +2,7 @@ import { useState } from 'react';
 import * as S from '../Header/header.styled.js';
 import { Link } from 'react-router-dom';
 import { paths } from '../../routesPath.js';
-function HeaderNav({ addCard }) {
+function HeaderNav({ addCard, isAuth }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const clickHandler = () => {
@@ -21,7 +21,7 @@ function HeaderNav({ addCard }) {
           className=" _hover02"
           onClick={clickHandler}
         >
-          Ivan Ivanov
+          {isAuth.name}
         </S.HeaderUser>
         {isOpen && (
           <>
@@ -30,8 +30,8 @@ function HeaderNav({ addCard }) {
               id="user-set-target"
             >
               {/* <a href="">x</a> */}
-              <p className="pop-user-set__name">Ivan Ivanov</p>
-              <p className="pop-user-set__mail">ivan.ivanov@gmail.com</p>
+              <p className="pop-user-set__name">{isAuth.name}</p>
+              <p className="pop-user-set__mail">{isAuth.login}</p>
               <div className="pop-user-set__theme">
                 <p>Темная тема</p>
                 <input type="checkbox" className="checkbox" name="checkbox" />
