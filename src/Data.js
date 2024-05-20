@@ -1,50 +1,55 @@
-export const tasks = [
+export const statusList = [
+    "Без статуса",
+    "Нужно сделать",
+    "В работе",
+    "Тестирование",
+    "Готово",
+  ];
+
+export const cardList = [
     {
         id: 1,
-        theme: "WebDesing",
-        date: "11.10.23",
+        topic: "Web Design",
         title: "Название задачи",
-        status: "Без статуса",
-        color:"_orange"
+        date: "15.05.2024",
+        status: statusList[0]
     },
     {
         id: 2,
-        theme: "Research",
-        date: "15.10.23",
+        topic: "Research",
         title: "Название задачи",
-        status: "Нужно сделать",
-        color:"_green"
+        date: "15.04.2024",
+        status: statusList[1]
     },
     {
         id: 3,
-        theme: "Copywriting",
-        date: "16.10.23",
+        topic: "Copywriting",
         title: "Название задачи",
-        status: "В работе",
-        color:"_purple"
+        date: "15.06.2024",
+        status: statusList[2]
     },
     {
         id: 4,
-        theme: "Research",
-        date: "17.10.23",
+        topic: "Web Design",
         title: "Название задачи",
-        status: "Тестирование",
-        color:"_green"
+        date: "15.07.2024",
+        status: statusList[3]
     },
     {
         id: 5,
-        theme: "Copywriting",
-        date: "14.10.23",
+        topic: "Research",
         title: "Название задачи",
-        status: "Готово",
-        color:"_purple"
+        date: "15.07.2024",
+        status: statusList[4]
     },
-    {
-        id: 6,
-        theme: "WebDesing",
-        date: "2.10.23",
-        title: "Название задачи",
-        status: "Нужно сделать",
-        color:"_orange"
-    }
 ]
+
+export const getTopicColor = (topic) => {
+    if (topic === "Web Design") {
+        return "_orange";
+    } else if (topic === "Research") {
+        return "_green";
+    } else if (topic === "Copywriting") {
+        return "_purple";
+    } else {return "_gray"}
+  }
