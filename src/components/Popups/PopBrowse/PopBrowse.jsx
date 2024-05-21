@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Calendar from "../../Calendar/Calendar";
-import { AppRoutes } from "../../../App";
+import { appRoutes } from "../../../App";
 import * as M from "../../../styled/modal";
 
 const PopBrowse = ({ id }) => {
@@ -69,7 +69,7 @@ const PopBrowse = ({ id }) => {
                 </button>
               </div>
               <button className="btn-browse__close _btn-bg _hover01">
-                <Link to={AppRoutes.MAIN}>Закрыть</Link>
+                <Link to={appRoutes.MAIN}>Закрыть</Link>
               </button>
             </div>
             <div className="pop-browse__btn-edit _hide">

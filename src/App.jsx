@@ -10,7 +10,7 @@ import PopNewCard from "./components/Popups/PopNewCard/PopNewCard";
 import { TaskProvider } from "./context/tasks";
 
 
-export const AppRoutes = {
+export const appRoutes = {
   MAIN: "/",
   CARD: "/card",
   NOT_FOUND: "*",
@@ -31,19 +31,19 @@ export default function App() {
           </TaskProvider>
         }
       >
-        <Route path={AppRoutes.MAIN} element={<MainPage />}>
-          <Route path={AppRoutes.CARD + "/:id"} element={<CardPage />} />
-          <Route path={AppRoutes.NEWCARD} element={<PopNewCard />} />
+        <Route path={appRoutes.MAIN} element={<MainPage />}>
+          <Route path={appRoutes.CARD + "/:id"} element={<CardPage />} />
+          <Route path={appRoutes.NEWCARD} element={<PopNewCard />} />
           <Route
-            path={AppRoutes.USER_EXIT}
+            path={appRoutes.USER_EXIT}
             element={<PopUser />}
           />
         </Route>
       </Route>
 
-      <Route path={AppRoutes.LOGIN} element={<Login />} />
-      <Route path={AppRoutes.REGISTER} element={<Register />} />
-      <Route path={AppRoutes.NOT_FOUND} element={<NotFound />} />
+      <Route path={appRoutes.LOGIN} element={<Login />} />
+      <Route path={appRoutes.REGISTER} element={<Register />} />
+      <Route path={appRoutes.NOT_FOUND} element={<NotFound />} />
     </Routes>
   );
 }

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { AppRoutes } from "../../../App";
+import { appRoutes } from "../../../App";
 import { useUser } from "../../../hooks/useUser";
 
 const PopUser = () => {
@@ -7,7 +7,7 @@ const PopUser = () => {
   const navigate = useNavigate();
   
   const handleToMain = () => {
-    navigate(AppRoutes.MAIN);
+    navigate(appRoutes.MAIN);
     document.getElementById("user-set-target").style.display = "none";
   };
   return (

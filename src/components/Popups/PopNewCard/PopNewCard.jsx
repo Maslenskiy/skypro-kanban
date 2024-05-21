@@ -3,7 +3,7 @@ import { useTasks } from "../../../hooks/useTasks";
 import { useUser } from "../../../hooks/useUser";
 import * as M from "../../../styled/modal";
 import Calendar from "../../Calendar/Calendar";
-import { AppRoutes } from "../../../App";
+import { appRoutes } from "../../../App";
 import { addNewTask } from "../../../api";
 import { Link, useNavigate } from "react-router-dom";
 import { getTopicColor } from "../../../data";
@@ -77,7 +77,7 @@ const PopNewCard = () => {
         date: newTask.date,
       }).then((data) => {
         getTasks(data.tasks);
-        navigate(AppRoutes.MAIN);
+        navigate(appRoutes.MAIN);
       });
     } catch (error) {
       console.error(error);
@@ -91,7 +91,7 @@ const PopNewCard = () => {
         <M.Block>
           <M.Content>
             <M.CardTitle>Создание задачи</M.CardTitle>
-            <Link to={AppRoutes.MAIN}>
+            <Link to={appRoutes.MAIN}>
               <M.Close>&#10006;</M.Close>
             </Link>
             <M.Wrap>

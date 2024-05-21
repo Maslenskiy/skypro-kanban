@@ -1,6 +1,6 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AppRoutes } from "../App";
+import { appRoutes } from "../App";
 
 function getUserFromLS() {
   try {
@@ -14,25 +14,17 @@ export const UserContext = createContext(null);
 
 export const UserProvider = ({ children }) => {
   let navigate = useNavigate();
-  const [user, setUser] = useState(getUserFromLS);
+  const [user, setUser] = useState(getUserFromLS());
 
   function isLoginUser(newUser) {
     setUser(newUser);
-    navigate(AppRoutes.MAIN);
+    navigate(appRoutes.MAIN);
   }
 
   function logoutUser() {
     setUser(null);
-    navigate(AppRoutes.LOGIN);
+    navigate(appRoutes.LOGIN);
   }
-
-  useEffect(() => {
-    if (user) {
-      localStorage.setItem("user", JSON.stringify(user));
-    } else {
-      localStorage.removeItem("user");
-    }
-  }, [user]);
 
   return (
     <UserContext.Provider value={{ user, isLoginUser, logoutUser }}>

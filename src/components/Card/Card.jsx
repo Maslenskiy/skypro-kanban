@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { getTopicColor } from "../../data";
 import * as T from "./Card.styled";
 import * as S from "./Cards.styled";
-import { AppRoutes } from "../../App";
+import { appRoutes } from "../../App";
 
 const Card = ({ id, topic, title, date }) => {
   const topicColor = getTopicColor(topic);
@@ -14,7 +14,7 @@ const Card = ({ id, topic, title, date }) => {
           <T.Topic $topicColor={topicColor}>
             <T.TopicText>{topic}</T.TopicText>
           </T.Topic>
-          <Link to={AppRoutes.CARD + "/" + id}>
+          <Link to={appRoutes.CARD + "/" + id}>
             <T.Btn>
               <T.BtnDiv></T.BtnDiv>
               <T.BtnDiv></T.BtnDiv>

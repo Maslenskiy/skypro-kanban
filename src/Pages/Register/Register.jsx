@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { AppRoutes } from "../../App";
+import { appRoutes } from "../../App";
 import * as S from "../../components/Form/Form";
 import { useState } from "react";
 import { registerUser } from "../../api";
@@ -32,7 +32,7 @@ export default function Register() {
     try {
       const response = await registerUser(formData);
       console.log(response);
-      navigate(AppRoutes.LOGIN);
+      navigate(appRoutes.LOGIN);
     } catch (error) {
       setRegError(error.message);
     }
@@ -82,7 +82,7 @@ export default function Register() {
         <S.FormButton type="submit">Зарегистрироваться</S.FormButton>
         <S.FormFooter>
           Уже есть аккаунт?{" "}
-          <Link to={AppRoutes.LOGIN} style={linkStyle}>
+          <Link to={appRoutes.LOGIN} style={linkStyle}>
             Войдите здесь
           </Link>
         </S.FormFooter>

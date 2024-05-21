@@ -3,7 +3,7 @@ import { useState } from "react";
 import * as S from "./Header.styled";
 import { Container } from "../../styled/common";
 import { Link, useNavigate } from "react-router-dom";
-import { AppRoutes } from "../../App";
+import { appRoutes } from "../../App";
 import { useUser } from "../../hooks/useUser";
 
 
@@ -23,7 +23,7 @@ const Header = () => {
 
 	const navigate = useNavigate();
 const handleExit =() => {
-navigate(AppRoutes.USER_EXIT)
+navigate(appRoutes.USER_EXIT)
 }
 
     return ( 
@@ -38,7 +38,7 @@ navigate(AppRoutes.USER_EXIT)
 					</S.Logo>
 					<S.Nav>
 						<S.BtnMainNew id="btnMainNew">
-							<Link to={AppRoutes.NEWCARD}><S.BtnMainNewText>Создать новую задачу</S.BtnMainNewText></Link>
+							<Link to={appRoutes.NEWCARD}><S.BtnMainNewText>Создать новую задачу</S.BtnMainNewText></Link>
 							</S.BtnMainNew>            
 						<S.User href="#" 
 						onClick = {handleClick}>{user.name}</S.User>

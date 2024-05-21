@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { AppRoutes } from "../../App";
+import { appRoutes } from "../../App";
 import * as S from "../../components/Form/Form";
 import { useState } from "react";
 import { loginUser } from "../../api";
@@ -69,7 +69,7 @@ export default function Login() {
         <S.FormButton type="submit">Войти</S.FormButton>
         <S.FormFooter>
           <S.FooterText>Нужно зарегистрироваться?</S.FooterText>
-          <Link to={AppRoutes.REGISTER} style={linkStyle}>
+          <Link to={appRoutes.REGISTER} style={linkStyle}>
             Регистрируйтесь здесь
           </Link>
         </S.FormFooter>
