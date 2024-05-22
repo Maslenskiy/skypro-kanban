@@ -17,11 +17,13 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(getUserFromLS());
 
   function isLoginUser(newUser) {
+    localStorage.setItem("user", JSON.stringify(newUser))
     setUser(newUser);
     navigate(appRoutes.MAIN);
   }
 
   function logoutUser() {
+    localStorage.removeItem("user")
     setUser(null);
     navigate(appRoutes.LOGIN);
   }
