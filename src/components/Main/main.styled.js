@@ -1,35 +1,40 @@
 import styled from "styled-components";
+import { breakpoints } from "../../lib/breakpoints";
 
 export const Main = styled.main`
- width: 100%;
-background-color: #EAEEF6;
-`
+  width: 100%;
+  background-color: #eaeef6;
+`;
 
-export const MainBlock = styled.div`
+export const Block = styled(Main)`
   width: 100%;
   margin: 0 auto;
   padding: 25px 0 49px;
-`
 
-export const MainContent = styled.div`
+  @media screen and (max-width: ${breakpoints.xl}px) {
     width: 100%;
-  display: flex;
-`
+    margin: 0 auto;
+    padding: 40px 0 64px;
+  }
+`;
 
-export const MainColumn = styled.div`
+export const Content = styled(Main)`
+  width: 100%;
+  display: flex;
+
+  @media screen and (max-width: ${breakpoints.xl}px) {
+    display: block;
+  }
+`;
+
+export const Column = styled(Main)`
   width: 20%;
   margin: 0 auto;
   display: block;
-`
 
-export const ColumnTitle = styled.div`
-  padding: 0 10px;
-  margin: 15px 0;
-p {
-  color: #94A6BE;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1;
-  text-transform: uppercase;
-}
-`
+  @media screen and (max-width: ${breakpoints.xl}px) {
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+  }
+`;

@@ -1,53 +1,56 @@
-import { useEffect, useState } from 'react';
-import  Main  from '../../components/Main/Main.jsx';
-import Header from '../../components/Header/Header.jsx';
-import PopNewCard from '../../components/Header/Popups/PopNewCard/PopNewCard.jsx';
-import { Wrapper } from '../../global.styled.js'
-import { Outlet } from 'react-router-dom';
-import { getCards } from '../../Api/cardsApi.js';
-export const MainPage = ({isAuth}) =>{
-    const [cards, setCards] = useState([]);
-    const [errorMsg, setErrorMsg] = useState('')
-    const [isLoading, setIsLoading] = useState(false);
+import { useEffect, useState } from "react";
+import "../../App.css";
+import Header from "../../components/Header/Header";
+import Main from "../../components/Main/Main";
+import { GlobalStyle } from "../../components/Global/Global.styled";
+import { Wrapper } from "../../styled/common";
+import { Outlet } from "react-router-dom";
+import { getCadrs } from "../../api";
+import { useUser } from "../../hooks/useUser";
+import { useTasks } from "../../hooks/useTasks";
 
-    function addCard(e) {
-        e.preventDefault();
-        const newCard = {
-          _id: cards[cards.length - 1]._id + 1,
-          theme: 'WebDesing',
-          date: new Date().toLocaleDateString('ru-RU', {
-            day: 'numeric',
-            month: 'numeric',
-            year: 'numeric',
-          }),
-          title: 'Название задачи',
-          status: 'Без статуса',
-          colorTheme: 'card__theme _orange',
-          color: '_orange',
-        };
-        setCards([...cards, newCard]);
+function MainPage() {
+  const { user } = useUser();
+  const { setTasks } = useTasks();
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const loadingErrorText = {
+    color: "red",
+    position: "absolute",
+    left: "50%",
+    top: "50%",
+    transform: "translate(-50%, -50%)",
+  };
+
+  useEffect(() => {
+    const onCards = async () => {
+      try {
+        const res = await getCadrs({
+          token: user.token,
+        });
+        setTasks(res.tasks);
+      } catch (error) {
+        console.error(error);
+        setError("Не удалось загрузить данные, попробуйте позже");
+      } finally {
+        setIsLoading(false);
       }
-    
-      useEffect(() => {
-        setIsLoading(true);
+    };
+    onCards();
+  }, [setTasks, user.token]);
 
-        getCards(isAuth.token).then((res) =>{
-          setErrorMsg('')
-          setCards(res.tasks)
-          setIsLoading(false);
-        }).catch((err)=>{
-          setErrorMsg(err.message)
-        }).finally(() =>{
-          setIsLoading(false)
-        })
-      }, []);
-
-    return (
-        <Wrapper>
-        <PopNewCard />
-        <Header isAuth={isAuth} addCard={addCard}/>
-        <Main errorMsg={errorMsg} cards={cards} isLoading={isLoading} />
+  return (
+    <>
+      <GlobalStyle />
+      <Wrapper>
+        <Header />
+        {error && <p style={loadingErrorText}>{error}</p>}
+        {!error && <Main isLoading={isLoading} />}
         <Outlet />
       </Wrapper>
-    )
+    </>
+  );
 }
+
+export default MainPage;
