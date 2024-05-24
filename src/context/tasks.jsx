@@ -1,18 +1,35 @@
 import { createContext, useState } from "react";
 
-export const TasksContext = createContext(null);
 
-export const TaskProvider = ({ children }) => {
+export const TasksContext = createContext();
 
-  const [tasks, setTasks] = useState([]);
 
-  const getTasks = (cards) => {
-    setTasks(cards);
-  };
+export const TasksProvider = ({ children }) => {
+    const [taskList, setTaskList] = useState([]);
 
-  return (
-    <TasksContext.Provider value={{ tasks, setTasks, getTasks }}>
-      {children}
-    </TasksContext.Provider>
-  );
+    const GetColor = (anyTheme) => {
+        switch (anyTheme) {
+            case "Web Design":
+                return "_orange"
+            case "Research":
+                return "_green"
+            case "Copywriting":
+                return "_purple"
+            default:
+                return "_gray"
+        }
+    }
+
+    const statusList = [
+        "Без статуса",
+        "Нужно сделать",
+        "В работе",
+        "Тестирование",
+        "Готово",
+    ];
+    
+
+    return <TasksContext.Provider value={{ taskList, setTaskList, statusList, GetColor }}>
+        {children}
+    </TasksContext.Provider>;
 };

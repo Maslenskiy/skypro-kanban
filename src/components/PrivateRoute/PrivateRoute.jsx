@@ -1,9 +1,13 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useUser } from "../../hooks/useUser";
+import { Paths } from "../../lib/paths";
+import { useUser } from "../../context/hooks/useUser";
+
+
 
 function PrivateRoute() {
-  const { user } = useUser();
-  return user ? <Outlet /> : <Navigate to="/login" />;
+    const {user} = useUser();
+    return (user ? <Outlet /> : <Navigate to={Paths.LOGIN}/>);
 }
 
 export default PrivateRoute;
+
