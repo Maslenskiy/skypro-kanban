@@ -1,5 +1,5 @@
 import { useState } from "react";
-import * as S from "./Header.styled";
+import * as S from "./header.styled";
 import { Container } from "../../styles/shared";
 import { Link } from "react-router-dom";
 import { Paths } from "../../lib/paths";
