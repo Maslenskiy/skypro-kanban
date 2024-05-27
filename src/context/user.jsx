@@ -1,36 +1,39 @@
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { appRoutes } from "../App";
+import { Paths } from "../lib/paths";
 
-function getUserFromLS() {
-  try {
-    return JSON.parse(localStorage.getItem("user"));
-  } catch (error) {
-    return null;
-  }
+export const UserContext = createContext();
+
+function checkUser() {
+    try {
+        const user = JSON.parse(localStorage.getItem("user"));
+        return user;
+    } catch (error) {
+        localStorage.removeItem("user");
+        return null;
+    }
 }
 
-export const UserContext = createContext(null);
 
 export const UserProvider = ({ children }) => {
-  let navigate = useNavigate();
-  const [user, setUser] = useState(getUserFromLS());
+    const [user, setUser] = useState(checkUser);
+    const navigate = useNavigate();
 
-  function isLoginUser(newUser) {
-    localStorage.setItem("user", JSON.stringify(newUser))
-    setUser(newUser);
-    navigate(appRoutes.MAIN);
-  }
+    function exit() {
+        localStorage.removeItem("user");
+        setUser(null);
+        navigate(Paths.LOGIN);
+    }
 
-  function logoutUser() {
-    localStorage.removeItem("user")
-    setUser(null);
-    navigate(appRoutes.LOGIN);
-  }
 
-  return (
-    <UserContext.Provider value={{ user, isLoginUser, logoutUser }}>
-      {children}
-    </UserContext.Provider>
-  );
+    function userReg(newUser) {
+        localStorage.setItem("user", JSON.stringify(newUser));
+        setUser(newUser);
+        navigate(Paths.LOGIN);
+    }
+
+    return <UserContext.Provider value={{ user, setUser, exit, userReg }}>
+        {children}
+    </UserContext.Provider>;
 };
+

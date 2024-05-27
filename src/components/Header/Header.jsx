@@ -1,61 +1,52 @@
-
 import { useState } from "react";
-import * as S from "./Header.styled";
-import { Container } from "../../styled/common";
-import { Link, useNavigate } from "react-router-dom";
-import { appRoutes } from "../../App";
-import { useUser } from "../../hooks/useUser";
+import * as S from "./header.styled";
+import { Container } from "../../styles/shared";
+import { Link } from "react-router-dom";
+import { Paths } from "../../lib/paths";
+import { useUser } from "../../context/hooks/useUser";
 
+function Header() {
+	const {user} = useUser();
+	const [isOpen, setIsOpen] = useState(false);
+	const popUserSetName = () => {
+		setIsOpen(!isOpen);
+	};
+	
 
-const Header = () => {
-	const {user} = useUser()
-	const [userWindow, setWindow] = useState(true)
-	function handleClick() {
-		setWindow(!userWindow)
-
-		if (userWindow){
-			document.getElementById("user-set-target").style.display = "block"
-		}
-		else {
-			document.getElementById("user-set-target").style.display = "none"
-		}
-	}
-
-	const navigate = useNavigate();
-const handleExit =() => {
-navigate(appRoutes.USER_EXIT)
-}
-
-    return ( 
-        <S.Header>
+	//className="header__user _hover02"
+	return (
+		<S.Header >
 			<Container>
-				<S.Block>
-					<S.Logo>
-						<a href="" target="_self"><img src="/images/logo.png" alt="logo" /></a>
-					</S.Logo>
-					<S.Logo>
-						<a href="" target="_self"><img src="/images/logo_dark.png" alt="logo" /></a>
-					</S.Logo>
-					<S.Nav>
-						<S.BtnMainNew id="btnMainNew">
-							<Link to={appRoutes.NEWCARD}><S.BtnMainNewText>Создать новую задачу</S.BtnMainNewText></Link>
-							</S.BtnMainNew>            
-						<S.User href="#" 
-						onClick = {handleClick}>{user.name}</S.User>
-						<div className="header__pop-user-set pop-user-set" id="user-set-target">
-							<p className="pop-user-set__name">{user.name}</p>
-							<p className="pop-user-set__mail">{user.login}</p>
-							<div className="pop-user-set__theme">
-								<p>Темная тема</p>
-								<input type="checkbox" className="checkbox" name="checkbox" />
-							</div>
-							<button onClick={handleExit} type="button" className="_hover03">Выйти</button>
-						</div>
-					</S.Nav>					
-				</S.Block>
-			</Container>			
+				<S.HeaderBlock>
+					<S.HeaderLogo className=" _show _light">
+						<Link to={Paths.MAIN}><img src="images/logo.png" alt="logo" /></Link>
+					</S.HeaderLogo>
+					<S.HeaderLogo className=" _dark">
+						<Link to={Paths.MAIN}><img src="images/logo_dark.png" alt="logo" /></Link>
+					</S.HeaderLogo>
+					<S.HeaderNav className="header__nav">
+						<S.HeaderBtn id="btnMainNew" type="button"><Link to={Paths.NEWCARD}>Создать новую задачу</Link></S.HeaderBtn>
+						<S.HeaderUser onClick={popUserSetName} href="#user-set-target">{user.name}</S.HeaderUser>
+						{isOpen &&
+							<S.HeaderPopUserSet id="user-set-target">
+								{/*<a href="">x</a> */}
+								<S.PopUserSetName>{user.name}</S.PopUserSetName>
+								<S.PopUserSetMail>{user.login}</S.PopUserSetMail>
+								<S.PopUserSetTheme className="pop-user-set__theme">
+									<p>Темная тема</p>
+									<input type="checkbox" name="checkbox" />
+								</S.PopUserSetTheme>
+								<S.PopUserSetButton type="button"><Link to={Paths.EXIT}>Выйти</Link></S.PopUserSetButton>
+							</S.HeaderPopUserSet>
+						}
+					</S.HeaderNav>
+				</S.HeaderBlock>
+			</Container>
 		</S.Header>
-     );
+	)
 }
- 
-export default Header;
+
+
+export default Header
+
+//<a href="#popNewCard">Создать новую задачу</a>

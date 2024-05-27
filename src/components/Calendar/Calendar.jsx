@@ -1,7 +1,20 @@
-import { MyDatePicker } from "../../lib/daypicker";
+import 'react-day-picker/dist/style.css';
+import { format } from 'date-fns';
+import { DayPicker } from 'react-day-picker';
+import ru from "date-fns/locale/ru";
 
-const Calendar = ({ selected, setSelected }) => {
-  return <MyDatePicker selected={selected} onSelect={setSelected} />;
-};
+export default function Calendar({selected, setSelected}) {
 
-export default Calendar;
+    let footer = <p>Выберете срок исполнения.</p>;
+    if (selected) {
+        footer = <p>Вы выбрали {format(selected, 'PP', { locale: ru })}.</p>;
+    }
+    return (
+        <DayPicker 
+            mode="single"
+            selected={selected}
+            onSelect={setSelected}
+            footer={footer}
+        />
+    );
+}
