@@ -1,23 +1,30 @@
-import HeaderNav from "./HeaderNav/HeaderNav";
+import {
+  SHeader,
+  SHeaderBlock,
+  SHeaderContainer,
+  SheaderLogoImg,
+} from './Header.styled';
+import HeaderNav from './HeaderNav/HeaderNav';
 
 export default function Header() {
-    return (
-        <header className="header">
-    <div className="container">
-      <div className="header__block">
-        <div className="header__logo _show _light">
-          <a href="" target="_self">
-            <img src="/logo.png" alt="logo" />
-          </a>
-        </div>
-        <div className="header__logo _dark">
-          <a href="" target="_self">
-            <img src="images/logo_dark.png" alt="logo" />
-          </a>
-        </div>
-        <HeaderNav />
-      </div>
-    </div>
-  </header>
-    )
+  return (
+    <SHeader>
+      <SHeaderContainer>
+        <SHeaderBlock>
+          <SheaderLogoImg>
+            <a href="" target="_self">
+              <img src="/logo.png" alt="logo" />
+            </a>
+          </SheaderLogoImg>
+
+          <SheaderLogoImg>
+            <a href="" target="_self">
+              <img src="/logo_dark.png" alt="logo" />
+            </a>
+          </SheaderLogoImg>
+          <HeaderNav />
+        </SHeaderBlock>
+      </SHeaderContainer>
+    </SHeader>
+  );
 }

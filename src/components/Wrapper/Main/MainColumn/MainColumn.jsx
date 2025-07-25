@@ -1,18 +1,19 @@
-import Cards from "./Cards/Cards";
-export default function MainColumn({status,cardList}) {
-    return (
-            <div className="main__column column">
-            <div className="column__title">
-              <p>{status}</p>
-            </div>
-            {cardList.map((el) => (
-          <Cards
+import Cards from './Cards/Cards';
+import { SMainColumn, SMainColumnTitle } from './MainColumn.styled';
+export default function MainColumn({ status, cardList }) {
+  return (
+    <SMainColumn>
+      <SMainColumnTitle>
+        <p>{status}</p>
+      </SMainColumnTitle>
+      {cardList.map((el) => (
+        <Cards
           key={el.id} // 🔥 Важно: нужен уникальный `key` для каждого элемента в списке
           color={el.color}
           cardTheme={el.cardTheme}
           title={el.theme}
         />
       ))}
-          </div>
-    )
+    </SMainColumn>
+  );
 }
