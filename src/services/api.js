@@ -1,5 +1,5 @@
 import axios from "axios";
-import { userLs } from "../utils/UsersLs";
+import { userLS } from "../utils/UsersLs";
 
 const API_URL = "https://wedev-api.sky.pro/api/kanban/";
 
@@ -34,7 +34,7 @@ export async function postTask({ token, task }) {
     throw new Error("Токен отсутствует");
   }
   try {
-    const user = userLs();
+    const user = userLS();
     const requestBody = {
       ...task,
       userId: user._id,

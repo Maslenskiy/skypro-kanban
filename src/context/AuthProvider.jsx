@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { AuthContext } from "./AuthContext";
-import { userLs } from "../utils/UsersLs";
+import { userLS } from "../utils/UsersLS";
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(userLs());
+  const [user, setUser] = useState(userLS());
 
   const updateUserInfo = (userData) => {
     setUser(userData);

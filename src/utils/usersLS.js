@@ -1,4 +1,4 @@
-export const userLs = () => {
+export const userLS = () => {
   try {
     return window.localStorage.getItem("userInfo")
       ? JSON.parse(window.localStorage.getItem("userInfo"))
