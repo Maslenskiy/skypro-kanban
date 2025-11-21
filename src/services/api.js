@@ -1,5 +1,5 @@
 import axios from "axios";
-import {userLs} from "../utils/usersLS.js";
+import {userLs} from "../utils/usersLs.js";
 
 const API_URL = "https://wedev-api.sky.pro/api/kanban/";
 

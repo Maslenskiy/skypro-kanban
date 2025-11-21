@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AuthContext } from "./AuthContext";
-import { userLs } from "../utils/UsersLs";
+import { userLs } from "../utils/usersLs.js";
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(userLs());
