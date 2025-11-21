@@ -1,15 +1,8 @@
-# Приложение **Канбан-доска задач**
+# React + Vite
 
-Основной функционал приложения: 
-- интеграция приложения с АПИ, получение и просмотр задач, полученных с сервера; 
-- управление задачами: добавление, редактирование, удаление задач;
-- обработка ошибок, поступающих с сервера при добавлении, редактировании, удалении задач;
-- обработка данных полей ввода, включая пробелы, для исключения отправки пустых данных;
-- обработка ошибок при недоступности сервера;
-- отображение анимации "скелетов" карточек задач при загрузке задач;
-- отображение надписи "Новых задач нет" в случае, когда сервер возвращает пустой массив;
-- страница "404" содержит ссылку на главную страницу приложения;
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Дополнительный функционал приложения: 
-- возможность смены темы приложения (светлая и темная темы);
-- использование библиотеки React-Toastify с учетом смены темы приложения; 
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh

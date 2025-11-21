@@ -1,54 +1,13 @@
-import Column from "../column/Column";
-import { MainContent } from "./MainContent.styled";
-import { MainBlock } from "./MainBlock.styled";
-import { Container } from "./Container.styled";
-import { SMain } from "./SMain.styled";
-import { useContext, useEffect } from "react";
-import { TasksContext } from "../../context/TasksContext";
-import EmptyList from "../EmptyList/EmptyList";
+import * as S from "./Main.styled";
 
-const Main = ({ error }) => {
-  const { loading, tasks, getTasks } = useContext(TasksContext);
-
-  useEffect(() => {
-    getTasks();
-  }, [getTasks]);
-
-  const columnTitles = [
-    "Без статуса",
-    "Нужно сделать",
-    "В работе",
-    "Тестирование",
-    "Готово",
-  ];
-
-  const emptyTasksList = !loading && (!tasks || tasks.length === 0);
-
+export default function Main({ children }) {
   return (
-    <SMain>
-      <Container>
-        <MainBlock>
-          <MainContent>
-            {emptyTasksList ? (
-              <EmptyList />
-            ) : (
-              columnTitles.map((title, index) => (
-                <Column
-                  key={index}
-                  title={title}
-                  loading={loading}
-                  tasks={tasks.filter(
-                    (card) => card.status.toLowerCase() === title.toLowerCase()
-                  )}
-                />
-              ))
-            )}
-          </MainContent>
-        </MainBlock>
-      </Container>
-      <p>{error}</p>
-    </SMain>
+    <S.MainContainer>
+      <S.MainWrapper>
+        <S.MainBlock>
+          <S.MainContent>{children}</S.MainContent>
+        </S.MainBlock>
+      </S.MainWrapper>
+    </S.MainContainer>
   );
-};
-
-export default Main;
+}

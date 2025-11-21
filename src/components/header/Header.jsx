@@ -1,45 +1,34 @@
-import { useContext, useState } from "react";
-import BlueButton from "../buttons/blue-button/BlueButton";
-import PopUser from "../popups/pop-user/PopUser";
-import Logo from "../logo/Logo";
-import { SHeader } from "./SHeader.styled";
-import { Container } from "./Container.styled";
-import { HeaderBlock } from "./HeaderBlock.styled";
-import { HeaderNav } from "./HeaderNav.styled";
-import { HeaderUser } from "./HeaderUser.styled";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
+import { useState } from "react";
+import * as S from "./Header.styled";
+import PopUser from "../popups/PopUser/PopUser";
+import { AppRoutes } from "../../lib/appRoutes";
+import useTheme from "../../hooks/useTheme";
 
-const Header = () => {
-  const [openPopUser, setOpenPopUser] = useState(false);
-  const { user } = useContext(AuthContext);
+export default function Header({ user }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const { theme } = useTheme();
 
   return (
-    <SHeader>
-      <Container>
-        <HeaderBlock>
-          <Logo />
-          <HeaderNav>
-            <Link to="/card/add">
-              <BlueButton id="btnMainNew" variant="header">
-                Создать новую задачу
-              </BlueButton>
-            </Link>
-
-            {openPopUser && <PopUser />}
-            <HeaderUser
-              onClick={() => {
-                setOpenPopUser(!openPopUser);
-              }}
-              $hover02={true}
-            >
+    <S.HeaderContainer>
+      <S.HeaderWrapper>
+        <S.HeaderBlock>
+          <S.HeaderLogo>
+            <img
+              src={`images/${theme === "light" ? "logo" : "logo_dark"}.png`}
+              alt="logo"
+            />
+          </S.HeaderLogo>
+          <S.HeaderNav>
+            <S.HeaderButton to={AppRoutes.ADD_TASK}>
+              Создать новую задачу
+            </S.HeaderButton>
+            <S.HeaderUser onClick={() => setIsOpen((prev) => !prev)}>
               {user.name}
-            </HeaderUser>
-          </HeaderNav>
-        </HeaderBlock>
-      </Container>
-    </SHeader>
+            </S.HeaderUser>
+            {isOpen && <PopUser />}
+          </S.HeaderNav>
+        </S.HeaderBlock>
+      </S.HeaderWrapper>
+    </S.HeaderContainer>
   );
-};
-
-export default Header;
+}

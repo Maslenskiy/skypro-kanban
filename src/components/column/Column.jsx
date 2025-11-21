@@ -1,27 +1,23 @@
-import Card from "../card/Card";
-import { ColumnTitle } from "./ColumnTitle.styled.js";
-import { Cards } from "./Cards.styled.js";
-import { ColumnMain } from "./ColumnMain.styled.js";
+import * as S from "./Column.styled";
+import Card from "../Card/Card";
 
-const Column = ({ title, tasks, loading }) => {
+export default function Column({ title, taskList }) {
   return (
-    <>
-      <ColumnMain>
-        <ColumnTitle>
-          <p>{title}</p>
-        </ColumnTitle>
-        <Cards>
-          {loading
-            ? Array.from({ length: 8 }).map((_, index) => (
-                <Card card={undefined} loading={true} key={index} />
-              ))
-            : tasks.map((card) => (
-                <Card card={card} loading={false} key={card._id} />
-              ))}
-        </Cards>
-      </ColumnMain>
-    </>
+    <S.MainColumn>
+      <S.ColumnTitle>
+        <S.TitleText>{title}</S.TitleText>
+      </S.ColumnTitle>
+      <S.CardsContainer>
+        {taskList.map((task) => (
+          <Card
+            key={task._id}
+            title={task.title}
+            topic={task.topic}
+            date={task.date}
+            id={task._id}
+          />
+        ))}
+      </S.CardsContainer>
+    </S.MainColumn>
   );
-};
-
-export default Column;
+}
